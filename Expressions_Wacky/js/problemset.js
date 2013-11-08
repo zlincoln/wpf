@@ -42,3 +42,5 @@ var catString = 'Our expert panel recommends the following pairings: ('+pairingS
 
 //log
 console.log(catString);
+
+$('body').append('<p>'+catString+'</p>');
