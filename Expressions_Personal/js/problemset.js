@@ -16,5 +16,12 @@ var milesPerGallon = parseInt(prompt('How many miles per gallon does your vehicl
 //national average 11/7/13
 var priceGallonGas = 3.222;
 
+//first calculate num of gallons needed
 var totalGallonsNeeded = ((commuteDistance*workDaysPerWeek)/milesPerGallon);
+//then use num of gallons needed to calc price
 var totalPriceOfGallonsNeeded = totalGallonsNeeded*priceGallonGas;
+
+var catString = 'Given your information it will cost you $'+totalPriceOfGallonsNeeded+' to drive this week.  Sorry :(';
+
+//print to console
+console.log(catString);
