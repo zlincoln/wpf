@@ -25,3 +25,7 @@ var catString = 'Given your information it will cost you $'+totalPriceOfGallonsN
 
 //print to console
 console.log(catString);
+
+$(function(){
+	$('body').append('<p>'+catString+'</p>');
+});
