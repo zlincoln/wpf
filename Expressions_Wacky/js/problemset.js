@@ -33,9 +33,12 @@ for(var i = 0; i < 3; i++){
 	favFoods.splice(favFoods.indexOf(randomFood), 1);
 	favDrinks.splice(favDrinks.indexOf(randomDrink), 1);
 	favDesserts.splice(favDesserts.indexOf(randomDessert), 1);
-	//concatinate
+	//concatinate and push into array
 	pairingSuggestions.push(randomFood+' + '+randomDrink+' + '+randomDessert);
 }
 
+//concatinate for logging
+var catString = 'Our expert panel recommends the following pairings: ('+pairingSuggestions[0]+'), ('+pairingSuggestions[1]+'), ('+pairingSuggestions[2]+')';
+
 //log
-console.log('Our expert panel recommends the following pairings: ('+pairingSuggestions[0]+'), ('+pairingSuggestions[1]+'), ('+pairingSuggestions[2]+')');
+console.log(catString);
