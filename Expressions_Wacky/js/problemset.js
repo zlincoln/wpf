@@ -22,6 +22,7 @@ if(favFoods.length != 3 || favDrinks.length != 3 || favDesserts.length != 3){
 
 //attach functionality to javascript array
 Array.prototype.getRandomFavorite = function(){
+	//use math.rand and array.length to select a random index (getting the floor so we know we have a whole number)
 	return this[Math.floor(Math.random() * this.length)]
 }
 
@@ -29,11 +30,16 @@ Array.prototype.getRandomFavorite = function(){
 var pairingSuggestions;
 
 for(var i = 0; i < 3; i++){
+	//use our new function to select a random item from array
 	var randomFood = favFoods.getRandomFavorite;
-	favFoods.push(randomFood);
 	var randomDrink = favDrinks.getRandomFavorite;
-	favDrinks.push(randomDrink);
 	var randomDessert = favDesserts.getRandomFavorite;
+	//remove item from array so don't randomly select the same element
+	favFoods.push(randomFood);
+	favDrinks.push(randomDrink);
 	favDesserts.push(randomDessert);
+	//concatinate
 	pairingSuggestions[] = randomFood+' + '+randomDrink+' + '+randomDessert;
 }
+
+console.log('Our expert panel recommends the following pairings: ('+pairingSuggestions[0]+'), ('+pairingSuggestions[1]+'), ('+pairingSuggestions[2]+')');
