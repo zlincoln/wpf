@@ -7,7 +7,7 @@ WPF - Assignment: Expressions
 //Problem: given a skill and number of hours practiced, how many hours until you are technically a master?
 
 //get name of skill and remove whitespace
-var skill = prompt('What skill do you practice to be good at your job?  For example - if you are a web developer, a skill might be "javascript"').trim;
+var skill = prompt('What skill do you practice to be good at your job?  For example - if you are a web developer, a skill might be "javascript"');
 //get number of years practiced
 var yearsPracticed = parseInt(prompt('How many years have you been actively practicing the skill (numeric)?'));
 //get number of hours practiced per week
@@ -22,7 +22,7 @@ var hoursPracticed = (avgHoursWeek*52)*yearsPracticed;
 var timeRemaining = reqHoursForMastery - hoursPracticed;
 
 //if time remaining then output, else congradulate
-var catString = (timeRemaining > 0) ? 'You have '+timeRemaining+' hours left of practice until you are considered a master.  Go get em!' : 'YOU ARE A MASTER';
+var catString = (timeRemaining > 0) ? 'You have '+timeRemaining+' hours left of practice until you are considered a master at '+skill+'.  Go get em!' : 'YOU ARE A MASTER';
 
 //log
 console.log(catString);
