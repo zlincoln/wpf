@@ -34,7 +34,7 @@ for(var i = 0; i < 3; i++){
 	favDrinks.splice(favDrinks.indexOf(randomDrink), 1);
 	favDesserts.splice(favDesserts.indexOf(randomDessert), 1);
 	//concatinate and push into array
-	pairingSuggestions.push(randomFood+' + '+randomDrink+' + '+randomDessert);
+	pairingSuggestions.push(randomFood.trim()+' + '+randomDrink.trim()+' + '+randomDessert.trim());
 }
 
 //concatinate for logging
