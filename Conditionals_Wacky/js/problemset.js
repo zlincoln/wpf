@@ -32,8 +32,7 @@ var opt1 = validatePreferencePrompt('When someone makes you angry, are you more 
 
 var opt2 = validatePreferencePrompt('Would you feel safer: "in a tank", "armed with deadly weapons", "expertly hidden"', 'safetyPreference');
 
-
-//combos
+var spiritAnimal = '';
 
 switch(opt1)
 {
@@ -74,23 +73,6 @@ switch(opt1)
 		alert('dev error');
 }
 
-//yell,tank
-	//blue whale
-//yell,weapon
-	//lion
-//yell,hidden
-	//bat
+var conclusion = (spiritAnimal != '') ? 'Your spirit animal is the '+spiritAnimal+'.' : 'Your spirit animal is the crazy housecat - because you break everything.';
 
-//attack,tank
-	//hippo
-//attack,weapon
-	//cobra
-//attack,hidden
-	//octopus
-
-//escape,tank
-	//armadillo
-//escape,weapon
-	//electric eel
-//escape,hidden
-	//arctic fox
+console.log(conclusion);
