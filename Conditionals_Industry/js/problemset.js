@@ -132,3 +132,7 @@ var calcCSS = parentSelectorName+' '+targetSelectorName+'{width:'+targetWidth+'%
 
 //log
 console.log(calcCSS);
+
+$(function(){
+	$('body').append('<p>Your new css is:  '+calcCSS+'</p>');
+});
