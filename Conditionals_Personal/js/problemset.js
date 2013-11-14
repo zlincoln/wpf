@@ -76,3 +76,7 @@ if(totalHoursWorked < 8){
 var conclusion = (advice != '') ? advice : 'You\'ve broken the system - I think your cleverness will take you far.';
 
 console.log(conclusion);
+
+$(function(){
+	$('body').append('<p>'+conclusion+'</p>');
+});
