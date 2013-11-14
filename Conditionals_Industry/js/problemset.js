@@ -25,8 +25,9 @@ var targetSelectorName = validateSelectorPrompt('Please provide a selector for t
 function validateValuePrompt(promptText, errorText){
 	errorText = (typeof errorText === 'undefined') ? '' : errorText;
 	var thePrompt = parseInt(prompt(errorText+promptText));
-	if(thePrompt == ''){
-		validateValuePrompt(promptText, 'Please provide some input.  ');
+	console.log(thePrompt);
+	if(isNaN(thePrompt)){
+		validateValuePrompt(promptText, 'Please provide numeric input.  ');
 	}else if(typeof thePrompt != 'number'){
 		validateValuePrompt(promptText, 'Please provide numeric input.  ');
 	}else{
@@ -45,10 +46,12 @@ function validateBooleanPrompt(promptText, errorText){
 		validateBooleanPrompt(promptText, 'Please provide some input.  ');
 	}else if(typeof thePrompt != 'string'){
 		validateBooleanPrompt(promptText, 'Please provide plain text input.  ');
-	}else if(thePrompt.toLowercase() == 'yes' || thePrompt.toLowercase() == 'true'){
+	}else if(thePrompt == 'yes' || thePrompt == 'true'){
 		return true;
-	}else if(thePrompt.toLowercase() == 'no' || thePrompt.toLowercase() == 'false'){
+	}else if(thePrompt == 'no' || thePrompt == 'false'){
 		return false;
+	}else{
+		validateBooleanPrompt(promptText, 'Please reply "yes" or "no".  ');
 	}
 }
 
@@ -62,10 +65,10 @@ function targetContextCalcPrompt(attribute, errorText){
 	}else{
 		if(attribute == 'margin'){
 			var attributeWidthPercentage = (thePrompt/parentPixelWidth)*100;
-			return '     margin: '+thePrompt+'px '+attributeWidthPercentage+'%;'
+			return ' margin: '+thePrompt+'px '+attributeWidthPercentage+'%;'
 		}else if(attribute == 'padding'){
 			var attributeWidthPercentage = (thePrompt/targetPixelWidth)*100;
-			return '     padding: '+thePrompt+'px '+attributeWidthPercentage+'%;'
+			return ' padding: '+thePrompt+'px '+attributeWidthPercentage+'%;'
 		}
 	}
 }
@@ -74,8 +77,15 @@ function validatePaddingMarginPrompt(){
 	var paddingBool = validateBooleanPrompt('Does the target have padding?');
 	var marginBool = validateBooleanPrompt('Does the target have margin?');
 
-	paddingValue = (paddingBool) ? targetContextCalcPrompt('padding') : '     padding: 0px';
-	marginValue = (marginBool) ? targetContextCalcPrompt('margin') : '     margin: 0px';
+	paddingValue = (paddingBool) ? targetContextCalcPrompt('padding') : ' padding: 0px';
+	marginValue = (marginBool) ? targetContextCalcPrompt('margin') : ' margin: 0px';
+
+	return paddingValue+marginValue;
 }
 
 var targetPaddingMargin = validatePaddingMarginPrompt();
+var targetWidth = (targetPixelWidth/parentPixelWidth)*100;
+
+var calcCSS = parentSelectorName+' '+targetSelectorName+'{width:'+targetWidth+'%;'+targetPaddingMargin+'}';
+
+console.log(calcCSS);
