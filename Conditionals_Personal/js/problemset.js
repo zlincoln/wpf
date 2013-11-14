@@ -1,6 +1,6 @@
 /*
 Zachary Lincoln
-WPF - Assignment: Conditionals
+WPF - var Assignment: Conditionals
 11/13/13
 */
 
@@ -11,7 +11,7 @@ function validatedPrompt(promptText, errorText){
 	//if error text is undefined make empty string else use the input
 	errorText = (typeof errorText === 'undefined') ? '' : errorText;
 	//run the prompt, combining error text with prompt text if present
-	thePrompt = parseInt(prompt(errorText+promptText));
+	var thePrompt = parseInt(prompt(errorText+promptText));
 	//if our prompt returns an empty string
 	if(thePrompt == ''){
 		//rerun function with error text

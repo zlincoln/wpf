@@ -8,7 +8,7 @@ WPF - Assignment: Conditionals
 
 function validateSelectorPrompt(promptText, errorText){
 	errorText = (typeof errorText === 'undefined') ? '' : errorText;
-	thePrompt = prompt(errorText+promptText);
+	var thePrompt = prompt(errorText+promptText);
 	if(thePrompt == ''){
 		validateSelectorPrompt(promptText, 'Please provide some input.  ');
 	}else if(typeof thePrompt != 'string'){
@@ -24,7 +24,7 @@ var targetSelectorName = validateSelectorPrompt('Please provide a selector for t
 
 function validateValuePrompt(promptText, errorText){
 	errorText = (typeof errorText === 'undefined') ? '' : errorText;
-	thePrompt = parseInt(prompt(errorText+promptText));
+	var thePrompt = parseInt(prompt(errorText+promptText));
 	if(thePrompt == ''){
 		validateValuePrompt(promptText, 'Please provide some input.  ');
 	}else if(typeof thePrompt != 'number'){
@@ -40,7 +40,7 @@ var targetPixelWidth = validateValuePrompt('What is the pixel width of the targe
 
 function validateBooleanPrompt(promptText, errorText){
 	errorText = (typeof errorText === 'undefined') ? '' : errorText;
-	thePrompt = prompt(errorText+promptText);
+	var thePrompt = prompt(errorText+promptText);
 	if(thePrompt == ''){
 		validateBooleanPrompt(promptText, 'Please provide some input.  ');
 	}else if(typeof thePrompt != 'string'){
@@ -52,11 +52,30 @@ function validateBooleanPrompt(promptText, errorText){
 	}
 }
 
-function targetContextCalcPrompt()
+function targetContextCalcPrompt(attribute, errorText){
+	errorText = (typeof errorText === 'undefined') ? '' : errorText;
+	var thePrompt = validateValuePrompt('What is the pixel value for '+attribute+'?  In this case all sides must be the same for simplicity - so please only provide one value.');
+	if(thePrompt == ''){
+		targetContextCalcPrompt(promptText, 'Please provide some input.  ');
+	}else if(typeof thePrompt != 'number'){
+		targetContextCalcPrompt(promptText, 'Please provide numeric input.  ');
+	}else{
+		if(attribute == 'margin'){
+			var attributeWidthPercentage = (thePrompt/parentPixelWidth)*100;
+			return '     margin: '+thePrompt+'px '+attributeWidthPercentage+'%;'
+		}else if(attribute == 'padding'){
+			var attributeWidthPercentage = (thePrompt/targetPixelWidth)*100;
+			return '     padding: '+thePrompt+'px '+attributeWidthPercentage+'%;'
+		}
+	}
+}
 
 function validatePaddingMarginPrompt(){
 	var paddingBool = validateBooleanPrompt('Does the target have padding?');
 	var marginBool = validateBooleanPrompt('Does the target have margin?');
+
+	paddingValue = (paddingBool) ? targetContextCalcPrompt('padding') : '     padding: 0px';
+	marginValue = (marginBool) ? targetContextCalcPrompt('margin') : '     margin: 0px';
 }
 
 var targetPaddingMargin = validatePaddingMarginPrompt();
