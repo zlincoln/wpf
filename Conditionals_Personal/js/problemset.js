@@ -15,12 +15,8 @@ function validatedPrompt(promptText, errorText){
 	//if our prompt returns an empty string
 	if(thePrompt == ''){
 		//rerun function with error text
-		validatedPrompt(promptText, 'You must provide some input!  ');
+		validatedPrompt(promptText, 'You must provide some numeric input!  ');
 	//if prompt doesn't return number (should always with parseInt!)
-	}else if(typeof thePrompt !== 'number'){
-		//rerun function with error text
-		validatedPrompt(promptText, 'Please provide a numeric answer.  ');
-	//no error
 	}else{
 		//return for storage
 		return thePrompt;

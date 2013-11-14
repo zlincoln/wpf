@@ -4,7 +4,7 @@ WPF - Assignment: Conditionals
 11/13/13
 */
 
-//problem: given pixel values of static mockup, return calculated percentages in css format for responsive markup
+//problem: given pixel values of static mockup, return calculated percentages in css format for fluid markup
 
 
 //validation for prompt expecting string
