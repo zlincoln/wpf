@@ -73,4 +73,6 @@ if(totalHoursWorked < 8){
 }
 
 //ternary - checks to see if our calc variable is filled - logging it if so, outputting error message if not
-(advice != '') ? console.log(advice) : console.log('You\'ve broken the system - I think your cleverness will take you far.');
+var conclusion = (advice != '') ? advice : 'You\'ve broken the system - I think your cleverness will take you far.';
+
+console.log(conclusion);
