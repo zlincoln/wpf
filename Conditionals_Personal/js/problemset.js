@@ -4,12 +4,19 @@ Assignment: Conditionals
 11/13/13
 */
 
+//problem: on a daily basis confirm whether i've done enough towards my future, and assess if it is sustainable
+
+//prompt the user for how many hours they've worked - store as int
 var jobHours = parseInt(prompt('How many hours have you worked today?'));
 
+//start summing total hours worked by assigning how many spent on the job
 var totalHoursWorked = jobHours;
 
+//if user spent less than 6 hours working
 if(jobHours <= 6){
+	//push them to spend some time studying and log how many they plan to do
 	studyHours = parseInt(prompt('Looks like you\'ve got some time to devote to studying your career skills, how many hours do you plan to spend doing so?'));
+	//add the study time to total hours worked
 	totalHoursWorked += studyHours;
 }else if(jobHours > 6 && jobHours <= 8){
 	studyHours = parseInt(prompt('Solid. A wise man once said, "I will do today what others will not, so tomorrow I can do what others cannot."  In that light, how many hours will you spend studying?'));
