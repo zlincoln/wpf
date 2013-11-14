@@ -100,3 +100,7 @@ var conclusion = (spiritAnimal != '') ? 'Your spirit animal is the '+spiritAnima
 
 //log
 console.log(conclusion);
+
+$(function(){
+	$('body').append('<p>'+conclusion+'</p>');
+});
