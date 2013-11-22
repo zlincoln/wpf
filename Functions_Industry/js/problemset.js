@@ -101,6 +101,7 @@ function getBranchName(promptText, errorText){
 	}
 }
 
+
 //returns a string of file paths added to array
 function addedFiles2String(){
 	//prep a string for concatination
