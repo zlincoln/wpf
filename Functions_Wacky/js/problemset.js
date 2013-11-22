@@ -39,3 +39,7 @@ var magicNumber = Math.floor((birthDate*favNumber)/firstNum);
 
 //log in console
 console.log('Your special magic number is:  '+magicNumber.toString());
+
+$(function(){
+	$('body').append('<p>Your special magic number is:  '+magicNumber.toString()+'</p>');
+});
