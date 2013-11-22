@@ -107,3 +107,7 @@ var luckyNumber = numberPrompt('What\'s your lucky number?');
 console.log('Simple Password:  '+password.simple(passPartsArray));
 //log our complicated password passing our inputs and parameters
 console.log('Max Security Password:  '+password.maxSecurity(passPartsArray,luckyNumber));
+
+$(function(){
+	$('body').append('<p>Your simple password is:  '+password.simple(passPartsArray)+'</p>').append('<p>Your max security password is:  '+password.maxSecurity(passPartsArray,luckyNumber)+'</p>');
+});
