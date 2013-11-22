@@ -90,8 +90,10 @@ var password = {
 		}
 		//randomly sort the object's special characters
 		this.randSpecialChar.sort(function(){return 0.5 - Math.random()});
+		//get the first letter to capitalize
+		var firstLetter = this['wordString'].slice(0,1).toUpperCase();
 		//return a concatinated string
-		return this.randSpecialChar.pop()+this.wordString+number;
+		return this.randSpecialChar.pop()+firstLetter+this['wordString'].slice(1,this['wordString'].length)+number;
 	}
 }
 
