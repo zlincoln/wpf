@@ -124,3 +124,7 @@ var branchName = getBranchName('Do you want to push your commit to a specific br
 var command = 'git add '+addedFiles2String()+'; git commit -m "progress checkpoint"; git push '+remoteName.trim()+' '+branchName.trim();
 //log in console
 console.log('your command is:  '+command);
+
+$(function(){
+	$('body').append('<p>Your command is:  '+command+'</p>');
+});
