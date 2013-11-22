@@ -7,34 +7,40 @@ WPF - Assignment: Functions
 //password generator
 
 function promptForPassParts(promptText, errorText){
-	errorText = (typeOf errorText == 'undefined') ? '' : errorText;
+	//falback for no errortext
+	errorText = (typeof errorText == 'undefined') ? '' : errorText;
 
-	var suppliedWordString = prompt(errorText+'  '+promptText);
-	var relevantWords = suppliedWordString.split(',');
+	var suppliedWordString = prompt(errorText+promptText);
+	
+	if(suppliedWordString == ''){
+		promptForPassParts(promptText, 'Please provide some input.  ');
+	}else{
+		var relevantWords = suppliedWordString.split(',');
+	}
 
-	if(relevantWords.length >= 4){
-		promptForPassParts(promptText, 'Please provide at least 4 words.');
+	if(relevantWords.length < 4){
+		promptForPassParts(promptText, 'Please provide at least 4 words.  ');
 	}else{
 		return relevantWords;
 	}
 }
 
 function numberPrompt(promptText, errorText){
-	errorText = (typeOf errorText == 'undefined') ? '' : errorText;
+	errorText = (typeof errorText == 'undefined') ? '' : errorText;
 
-	var luckyNumber = parseInt(prompt(errorText+'  '+promptText));
+	var luckyNumber = parseInt(prompt(errorText+promptText));
 
 	if(isNaN(luckyNumber)){
-		numberPrompt(promptText, 'Please provide a number.');
+		numberPrompt(promptText, 'Please provide a number.  ');
 	}else{
 		return luckyNumber;
 	}
 }
 
-var Password = {
+var password = {
 	"wordString": '',
 	"randSpecialChar": ['!','*','%','$'],
-	simple: function(wordArray, number){
+	simple: function(wordArray){
 		if(this.wordString == ''){
 			wordArray.sort(function(){return 0.5 - Math.random()});
 			for(var i = 0; i < 4; i++){
@@ -42,7 +48,7 @@ var Password = {
 				this.wordString += passPiece.trim();
 			}
 		}
-		return this.wordString+number;
+		return this.wordString;
 	},
 	maxSecurity: function(wordArray, number){
 		if(this.wordString == ''){
@@ -53,7 +59,7 @@ var Password = {
 			}
 		}
 		this.randSpecialChar.sort(function(){return 0.5 - Math.random()});
-		return this.wordString.charAt(0).toUppercase()+this.wordString.slice(1)+number+this.randSpecialChar.pop();
+		return this.randSpecialChar.pop()+this.wordString+number;
 	}
 }
 
@@ -61,9 +67,7 @@ var passPartsArray = promptForPassParts('In a comma separated list, can you prov
 
 var luckyNumber = numberPrompt('What\'s your lucky number?');
 
-var userPass = new Password();
-
-console.log(userPass.simple(passPartsArray,luckyNumber));
-console.log(userPass.maxSecurity(passPartsArray,luckyNumber));
+console.log('Simple Password:  '+password.simple(passPartsArray));
+console.log('Max Security Password:  '+password.maxSecurity(passPartsArray,luckyNumber));
 
 
