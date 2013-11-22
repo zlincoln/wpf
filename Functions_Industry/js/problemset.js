@@ -6,14 +6,21 @@ WPF - Assignment: Functions
 
 //git command line creator
 
+//create empty array to store file paths
 var addedFiles = [];
 
+//prompts for files to include in commit
 function getFilePathPrompt(promptText, errorText){
+	//fallback if no error text
 	errorText = (typeof errorText == 'undefined') ? '' : errorText;
+	//checks to see if files have been added - if so, prep for inclusion in prompt
 	addedFilesString = (addedFiles.length > 0) ? '\n\n'+addedFiles.toString() : '';
 
+	//prompt user for file path(s)
 	var filePath = prompt(errorText+promptText+addedFilesString);
+	//if empty string
 	if(filePath == ''){
+		//prompt again with explaination
 		getFilePathPrompt(promptText, 'Please provide some input.  ');
 	}else{
 		addedFiles.push(filePath);
